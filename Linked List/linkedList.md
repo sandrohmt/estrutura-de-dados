@@ -35,7 +35,3 @@ Números de elementos pode aumentar ou diminuir durante a execução.
 
 O acesso em cada elemento não é em tempo constante, mas depende da quantidade de elementos, dificultando a procura de elementos.
 
-### Exemplo:
-
-Avançar e voltar de páginas em um navegador.
-Ctrl + z, ação de desfazer.
