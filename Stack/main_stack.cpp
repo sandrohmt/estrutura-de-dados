@@ -17,23 +17,24 @@ int main() {
 
     cin >> option;
 
-    if (option == 1) {
+    switch (option) {
+      case 1: 
       cout << "Digite o elemento a ser inserido:\n";
       cin >> item;
       stack1.push(item);
-    } 
+      break;
 
-    if (option == 2) {
+    case 2:
         item = stack1.pop();
         if (!stack1.isEmpty()) {
           cout << "Elemento removido: " << item << endl;
         }        
-    } 
+        break;
     
-    if (option == 3) {
+    case 3:
       stack1.print();
-    } 
-    
+      break;
+    }
     
   } while(option != 0);
 

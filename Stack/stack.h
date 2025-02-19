@@ -9,7 +9,7 @@ private:
 
 public:
   stack();  // construtora
-  ~stack(); // construtora
+  ~stack(); // destrutora
   bool isFull();
   bool isEmpty();
   void push(ItemType item);
