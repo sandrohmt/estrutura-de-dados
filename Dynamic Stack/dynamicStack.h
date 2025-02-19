@@ -1,19 +1,23 @@
-typedef int ItemType; // Para facilitar a tipagem, caso a seja necessário mudar o tipo dos exemplos
-const int max_items = 100;
+typedef int ItemType; 
 
-class stack
+struct node
+{
+  ItemType value;
+  node* next;
+};
+
+
+class dynamicStack
 {
 private:
-  int length;
-  ItemType *structure; // Vetor
+node* topNode;
 
 public:
-  stack();  // construtora
-  ~stack(); // destrutora
+  dynamicStack();  
+  ~dynamicStack(); 
   bool isFull();
   bool isEmpty();
   void push(ItemType item);
   ItemType pop();
   void print();
-  int getLength();
 };

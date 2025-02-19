@@ -1,10 +1,10 @@
 #include <iostream>
-#include "stack.h"
+#include "dynamicStack.h"
 
 using namespace std;
 
 int main() {
-  stack stack1;
+  dynamicStack dynamicStack1;
   ItemType item;
   int option;
   cout << "Programa gerador de pilha:\n";
@@ -21,18 +21,18 @@ int main() {
       case 1: 
       cout << "Digite o elemento a ser inserido:\n";
       cin >> item;
-      stack1.push(item);
+      dynamicStack1.push(item);
       break;
 
     case 2:
-        item = stack1.pop();
-        if (!stack1.isEmpty()) {
+        item = dynamicStack1.pop();
+        if (!dynamicStack1.isEmpty()) {
           cout << "Elemento removido: " << item << endl;
         }        
         break;
     
     case 3:
-      stack1.print();
+      dynamicStack1.print();
       break;
     }
     

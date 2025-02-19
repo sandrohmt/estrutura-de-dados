@@ -1,67 +1,84 @@
 #include <iostream>
-#include "stack.h"
+#include <cstddef> // NULL
+#include "dynamicStack.h"
 
 using namespace std;
 
-stack::stack()
-{
-  length = 0;
-  structure = new ItemType[max_items];
-}
-
-stack::~stack()
-{
-  delete[] structure;
-}
-
-bool stack::isFull()
-{
-  return (length == max_items);
-}
-
-bool stack::isEmpty()
-{
-  return (length == 0);
-}
-
-void stack::push(ItemType item)
-{
-  if (isFull())
+  dynamicStack::dynamicStack()
   {
-    cout << "Não é possível inserir porque a pilha está cheia!\n";
+    topNode = NULL;
   }
-  else
-  {
-    structure[length] = item;
-    length++;
-  }
-}
 
-ItemType stack::pop()
-{
-  if (isEmpty())
+  dynamicStack::~dynamicStack()
   {
-    cout << "Não é possível remover porque a pilha está vazia!\n";
-    return 0;
+    node* tempNode;
+    while (topNode != NULL)
+    {
+      tempNode = topNode;
+      topNode = topNode->next;
+      delete tempNode;
+    }
+    
   }
-  else
-  {
-    length--;
-    return structure[length];
-  }
-}
 
-void stack::print()
-{
-  cout << "Pilha: [ ";
-  for (int i = 0; i < length; i++)
+  bool dynamicStack::isFull() 
   {
-    cout << structure[i] << " ";
+    node* newNode;
+    try { // Tentar criar um novo nó
+      newNode = new node; 
+      delete newNode; // Se conseguir, deleta ele
+      return false; // E retorna que o isFull é false
+    } catch(bad_alloc exception) {
+      return true; // Se não conseguir, retorna que o isFull é true
+    }
   }
-  cout << "]\n";
-}
 
-int stack::getLength()
-{
-  return length;
-}
+  bool dynamicStack::isEmpty()
+  {
+    return (topNode == NULL);
+  }
+
+  void dynamicStack::push(ItemType item)
+  {
+    if (isFull())
+    {
+      cout << "Não é possível inserir porque a pilha está cheia!\n";
+    } else
+    {
+      node* newNode = new node;
+      newNode->value = item;
+      newNode->next = topNode; // Aponta para o topo antigo
+      topNode = newNode; // O topo agora é o novo nó
+    }
+  
+  }
+
+  ItemType dynamicStack::pop()
+  {
+    if (isEmpty())
+    {
+      cout << "Não é possível remover porque a pilha está vazia!\n";
+      return 0;
+    } else
+    {
+      node* tempNode; // Criação do tempNode para remover ele em vez do topNode
+      tempNode = topNode; // Faz a substituição
+      ItemType item = topNode->value; // Isso é para o valor removido conseguir ser retornado
+      topNode = topNode->next; // Faz a substituição
+      delete tempNode; // Deleta o temporário
+      return item;
+    }
+    
+  }
+
+  void dynamicStack::print()
+  {
+    node* tempNode = topNode;
+    cout << "Pilha: [ ";
+    while (tempNode != NULL) // O tempNode vai imprimindo e passando pro próximo até o próximo ser null (chega no final)
+    {
+      cout << tempNode->value << " ";
+      tempNode = tempNode->next; 
+    }
+    cout << "]\n";
+  }
