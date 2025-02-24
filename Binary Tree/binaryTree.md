@@ -38,3 +38,7 @@ Uma árvore binária é dita de busca, se para cada um de seus nós, temos que o
  Se a raiz for nula, o elemento será inserido nela.
  Se não, ele caminha a árvore perguntando se os elementos são menores ou maiores que ele, e assim, definindo o seu caminho até encontrar um espaço vazio.
 
+
+### Árvore Binária de busca -> Busca
+Primeiro compara o elemento com a raiz, se for menor vai pra esquerda, se for maior vai para direita, recursivamente.
+As duas formas de parar a busca é quando o elemento ou um espaço vazio forem encontrados.

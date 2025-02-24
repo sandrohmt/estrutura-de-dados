@@ -97,6 +97,24 @@ ItemType BinarySearchTree::pop(Student student)
 
 void BinarySearchTree::search(Student &student, bool &search)
 {
+  search = false;
+  node* currentNode = root;
+  while (currentNode != NULL)
+  {
+    if (student.getRa() < currentNode->student.getRa())
+    {
+      currentNode = currentNode->leftChild;
+    } else if (student.getRa() > currentNode->student.getRa())
+    {
+      currentNode = currentNode->rightChild;
+    } else {
+      search = true;
+      student = currentNode->student;
+      break;
+    }
+    
+  }
+  
 }
 
 void BinarySearchTree::inOrderPrint(node *currentNode)
