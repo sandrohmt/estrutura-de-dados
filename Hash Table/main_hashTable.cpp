@@ -65,7 +65,7 @@ int main()
       {
         cout << "Aluno encontrado:\n";
         cout << "RA: " << student.getRa() << endl;
-        cout << "Nome: " << student.getName() endl;
+        cout << "Nome: " << student.getName() << endl;
       }
       else
       {
