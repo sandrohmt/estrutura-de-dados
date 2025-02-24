@@ -1,23 +1,27 @@
-typedef int ItemType; 
-
 struct node
 {
-  ItemType value;
-  node* next;
+  Student student;
+  node* leftChild;
+  node* rightChild;
 };
 
 
-class dynamicStack
+class BinarySearchTree
 {
 private:
-node* topNode;
+node* root;
 
 public:
-  dynamicStack();  
-  ~dynamicStack(); 
+  BinarySearchTree();  
+  ~BinarySearchTree(); 
+  void deleteTree(node* currentNode);
+  node* getRoot();
   bool isFull();
   bool isEmpty();
-  void push(ItemType item);
-  ItemType pop();
-  void print();
+  void push(Student student);
+  ItemType pop(Student student);
+  void search(Student& student, bool& search)
+  void inOrderPrint(node* currentNode);
+  void preOrderPrint(node* currentNode);
+  void postOrderPrint(node* currentNode);
 };
