@@ -32,5 +32,9 @@ Distância do nó até a raiz.
 É uma árvore que cada nó tem no máximo 2 filhos.
 
 ### Árvore Binária de busca
-Todos os nós a esquerda de um nó são menores que ele, e todos os nós a direita são maiores.
+Uma árvore binária é dita de busca, se para cada um de seus nós, temos que o elemento deste nó é maior que todos os elementos dos nós da sub árvore à sua esquerda, e menro que todos os elementos dos nós da sub árvore à sua direita.
+
+### Árvore Binária de busca -> Inserção
+ Se a raiz for nula, o elemento será inserido nela.
+ Se não, ele caminha a árvore perguntando se os elementos são menores ou maiores que ele, e assim, definindo o seu caminho até encontrar um espaço vazio.
 
