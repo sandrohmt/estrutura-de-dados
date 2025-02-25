@@ -93,28 +93,78 @@ void BinarySearchTree::push(Student student)
 
 ItemType BinarySearchTree::pop(Student student)
 {
+  popSearch(student, root); // Vai fazer uma busca do aluno começando pela raiz
+}
+
+void BinarySearchTree::popSearch(Student student, node *&currentNode)
+{
+  if (student.getRa() < currentNode->student.getRa())
+  {
+    popSearch(student, currentNode->leftChild);
+  }
+  else if (student.getRa() > currentNode->student.getRa())
+  {
+    popSearch(student, currentNode->rightChild);
+  }
+  else
+  {
+    removeNode(currentNode);
+  }
+}
+
+void BinarySearchTree::removeNode(node *&currentNode)
+{
+  node *temp = currentNode;
+  if (currentNode->leftChild == NULL)
+  {
+    currentNode = currentNode->rightChild; // Se ele não tiver filhos o currentNode vira NULL, então também funciona pra esse caso
+    delete temp;
+  }
+  else if (currentNode->rightChild == NULL)
+  {
+    currentNode = currentNode->leftChild;
+    delete temp;
+  }
+  else
+  {
+    Student successorStudent; // O Student é enviado vazio porque dentro da função ele recebe um valor, o currentNode serve para obter o sucessor dele''
+    getSuccessor(successorStudent, currentNode);
+    currentNode->student = successorStudent;
+    popSearch(successorStudent, currentNode->rightChild); // A busca aqui começa a partir da direita do successorStudent, porque se começar pela raiz vai encontrar ele 
+  }
+}
+
+void BinarySearchTree::getSuccessor(Student &successorStudent, node *temp) // Menor valor a direita
+{
+  temp = temp->rightChild;
+  while (temp->leftChild != NULL)
+  {
+    temp = temp->leftChild;
+  }
+  successorStudent =  temp->student;
 }
 
 void BinarySearchTree::search(Student &student, bool &search)
 {
   search = false;
-  node* currentNode = root;
+  node *currentNode = root;
   while (currentNode != NULL)
   {
     if (student.getRa() < currentNode->student.getRa())
     {
       currentNode = currentNode->leftChild;
-    } else if (student.getRa() > currentNode->student.getRa())
+    }
+    else if (student.getRa() > currentNode->student.getRa())
     {
       currentNode = currentNode->rightChild;
-    } else {
+    }
+    else
+    {
       search = true;
       student = currentNode->student;
       break;
     }
-    
   }
-  
 }
 
 void BinarySearchTree::inOrderPrint(node *currentNode)

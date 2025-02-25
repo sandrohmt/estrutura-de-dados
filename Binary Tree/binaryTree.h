@@ -21,7 +21,10 @@ public:
   bool isFull();
   bool isEmpty();
   void push(Student student);
-  ItemType pop(Student student);
+  void pop(Student student);
+  void popSearch(Student student, node*& currentNode); // O ponteiro está atribuído por referência porque depois já dá pra saber qual é o ponteiro do pai dele.
+  void removeNode(node*& currentNode);
+  void getSuccessor(Student& successorStudent, node* temp); // successorStudent é onde a gente vai guardar o aluno que tá no sucessor 
   void search(Student& student, bool& search)
   void inOrderPrint(node* currentNode);
   void preOrderPrint(node* currentNode);
