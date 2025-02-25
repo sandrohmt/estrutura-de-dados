@@ -53,3 +53,19 @@ Para deletar um nó com apenas um filho é necessário fazer o ponteiro do pai q
 Para deletar um nó com dois filhos é necessário buscar o seu sucessor para substituir o lugar do nó removido, deletar o nó antigo do sucessor, e colocar NULL no ponteiro do pai que estava apontando pra ele.
 Esse sucessor pode ser o menor elemento da direita ou o maior elemento da esquerda.
 Se esse nó tiver um filho, fazer a mesma coisa do caso 2.
+
+## Percurso 
+É a iteração de todos os nós de uma árvore de uma forma organizada.
+![alt text](image-2.png)
+
+### Em Ordem
+O filho esquerdo é visitado primeiro, depois o nó pai e por fim o filho direito. Essa técnica é comumente utilizada para obter os elementos de uma árvore binária de busca em ordem crescente.
+A ordem da árvore binária acima fica: 1,2,3,4,5,6,7
+
+### Pré Ordem
+O nó pai é visitado primeiro, depois o filho esquerdo e por fim o filho direito. O nó pai é visitado antes de todos os filhos dele. Essa técnica é útil para criar uma cópia da árvore ou para realizar operações de pré-processamento antes de visitar os nós filhos. A ordem da árvore binária acima fica: 4,1,3,2,6,5,7
+
+### Pós Ordem
+O filho esquerdo é visitado primeiro, depois o filho direito e por fim o nó pai. O nó pai é visitado após todos os filhos dele. Essa técnica é frequentemente empregada em cálculos que requerem informações dos nós filhos antes de processar o nó pai, como a avaliação de expressões aritméticas. A ordem da árvore binária acima fica: 2,3,1,5,7,6,4
+
+

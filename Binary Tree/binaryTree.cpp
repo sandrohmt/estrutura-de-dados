@@ -4,17 +4,25 @@
 
 using namespace std;
 
-BinarySearchTree::BinarySearchTree();
+BinarySearchTree::BinarySearchTree()
 {
   root = NULL;
 }
 
 BinarySearchTree::~BinarySearchTree()
 {
+  deleteTree(root);
 }
 
 void BinarySearchTree::deleteTree(node *currentNode)
 {
+  if (currentNode != NULL)
+  {
+    deleteTree(currentNode->leftChild);
+    deleteTree(currentNode->rightChild);
+
+    delete currentNode;
+  }
 }
 
 node *BinarySearchTree::getRoot()
@@ -24,14 +32,9 @@ node *BinarySearchTree::getRoot()
 
 bool BinarySearchTree::isFull()
 {
-  return (root == NULL);
-}
-
-bool BinarySearchTree::isEmpty()
-{
   try
   {
-    node *temp = new No;
+    node *temp = new node;
     delete temp;
     return false;
   }
@@ -41,15 +44,21 @@ bool BinarySearchTree::isEmpty()
   }
 }
 
+bool BinarySearchTree::isEmpty()
+{
+  return (root == NULL);
+}
+
 void BinarySearchTree::push(Student student)
 {
   if (isFull())
   {
-    cout << "A árvore está cheia!\n" cout << "Não foi possível inserir este elemento!\n"
+    cout << "A árvore está cheia!\n";
+    cout << "Não foi possível inserir este elemento!\n";
   }
   else
   {
-    node *newNode = new No;
+    node *newNode = new node;
     newNode->student = student;
     newNode->leftChild = NULL;
     newNode->rightChild = NULL;
@@ -91,7 +100,7 @@ void BinarySearchTree::push(Student student)
   }
 }
 
-ItemType BinarySearchTree::pop(Student student)
+void BinarySearchTree::pop(Student student)
 {
   popSearch(student, root); // Vai fazer uma busca do aluno começando pela raiz
 }
@@ -127,9 +136,9 @@ void BinarySearchTree::removeNode(node *&currentNode)
   }
   else
   {
-    Student successorStudent; // O Student é enviado vazio porque dentro da função ele recebe um valor, o currentNode serve para obter o sucessor dele''
-    getSuccessor(successorStudent, currentNode); // A gente quer saber o sucessor do nó atual, que é o nó que a gente quer remover
-    currentNode->student = successorStudent; // Apenas o valor do aluno é trocado, aqui é onde acontece a substituição
+    Student successorStudent;                             // O Student é enviado vazio porque dentro da função ele recebe um valor, o currentNode serve para obter o sucessor dele''
+    getSuccessor(successorStudent, currentNode);          // A gente quer saber o sucessor do nó atual, que é o nó que a gente quer remover
+    currentNode->student = successorStudent;              // Apenas o valor do aluno é trocado, aqui é onde acontece a substituição
     popSearch(successorStudent, currentNode->rightChild); // A busca aqui começa a partir da direita do successorStudent, porque se começar pela raiz vai encontrar ele e remover a cópia errada. Depois da substituição, você remove a cópia.
   }
 }
@@ -141,7 +150,7 @@ void BinarySearchTree::getSuccessor(Student &successorStudent, node *temp) // Me
   {
     temp = temp->leftChild;
   }
-  successorStudent =  temp->student;
+  successorStudent = temp->student;
 }
 
 void BinarySearchTree::search(Student &student, bool &search)
@@ -169,12 +178,37 @@ void BinarySearchTree::search(Student &student, bool &search)
 
 void BinarySearchTree::inOrderPrint(node *currentNode)
 {
+  if (currentNode != NULL)
+  {
+    inOrderPrint(currentNode->leftChild);
+
+    cout << currentNode->student.getName() << ": ";
+    cout << currentNode->student.getRa() << ": " << endl;
+
+    inOrderPrint(currentNode->rightChild);
+  }
 }
 
 void BinarySearchTree::preOrderPrint(node *currentNode)
 {
+  if (currentNode != NULL)
+  {
+    cout << currentNode->student.getName() << ": ";
+    cout << currentNode->student.getRa() << ": " << endl;
+
+    preOrderPrint(currentNode->leftChild);
+    preOrderPrint(currentNode->rightChild);
+  }
 }
 
 void BinarySearchTree::postOrderPrint(node *currentNode)
 {
+  if (currentNode != NULL)
+  {
+    postOrderPrint(currentNode->leftChild);
+    postOrderPrint(currentNode->rightChild);
+
+    cout << currentNode->student.getName() << ": ";
+    cout << currentNode->student.getRa() << ": " << endl;
+  }
 }
