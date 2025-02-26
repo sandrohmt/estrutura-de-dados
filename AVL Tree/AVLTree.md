@@ -5,7 +5,8 @@ Isso garante que as funções de busca sejam mais eficientes, mas, em contra par
 ## Fator de balanceamento
 É a diferença entre as subárvores da direita e da esquerda, ou seja, dado por: Fb = hD - hE.
 Onde hD é a altura da subárvore à direita do nó e hE é a altura da subárvore à esquerda.
-Quando um nó atinge o fator de balanceamento 0, todos os nós pais não mudarão o fator de balanceamento.
+Quando um nó atinge o fator de balanceamento 0 devido ao crescimento da árvore, os fatores de balanceamento dos nós ancestrais permanecem inalterados.
+Se a remoção de um nó faz com que o fator de balanceamento de um nó deixe de ser 0, então nenhum de seus ancestrais teve seu fator de balanceamento reduzido.
 
 ## Rotações
 
