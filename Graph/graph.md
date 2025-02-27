@@ -57,6 +57,34 @@ Dependendo do caminho feito, pode ser mais ou menos custoso.
 
 ![alt text](image-2.png)
 
+## Buscas
+
+### Busca em profundidade
+A busca em profundidade explora o grafo indo o mais fundo possível em cada caminho antes de voltar. Para isso, utiliza uma pilha, garantindo que os últimos nós adicionados sejam processados primeiro.
+Vai achar um dos caminhos possíveis, não necessariamente o melhor caminho.
+
+#### Passo a passo:
+1. Começa colocando a raiz (A) na base da pilha.
+2. Se A não for o nó buscado, remove-o da pilha e adiciona seus filhos (B e C).
+3. Em vez de processar o primeiro filho adicionado (B), pega o último (C) e continua descendo.
+4. Explora todos os filhos e netos de C antes de voltar e explorar os filhos de B.
+5. O processo se repete até encontrar o nó desejado ou visitar todos os vértices acessíveis.
+
+### Busca em largura
+A busca em largura explora todos os vizinhos de um nó antes de avançar para o próximo nível. Para isso, utiliza uma fila, garantindo que os vértices sejam visitados em ordem de proximidade.
+Vai achar o melhor caminho possível em mínimo de arestas percorridas.
+
+#### Passo a passo:
+1. Começa pelo nó raiz (A) e o coloca na fila.
+2. Se A não for o nó buscado, adiciona seus filhos (B e C) à fila.
+3. Remove A da fila. Agora, os próximos na fila são B e C.
+4. O próximo a ser processado é B (o primeiro da fila).
+5. Se B não for o nó buscado, adiciona seus filhos (D e E) à fila.
+6. Continua o processo até encontrar o nó desejado ou visitar todos os vértices acessíveis.
+
+![alt text](image-4.png)
+
+
 ## Exemplos
 - Conexões de amizades em redes sociais, cada pessoa seria um vértice e cada conexão seria uma aresta.
 - Uma rede de computadores.
