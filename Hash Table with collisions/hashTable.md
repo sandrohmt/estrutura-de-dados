@@ -24,6 +24,7 @@ Colisões
 
 ### Tratamento de colisões:
 
+Tratar colisões significa que, no caso de ocorrência de colisões, um dos registros ficará em um segundo endereço de memóriam que também será analisado em caso de busca, atualização e remoção do registro.
 Existem diversas formas de realizar o tratamento de colisões em uma tabela Hash, as duas formas que estudaremos são:
 
 #### Encadeamento exterior ou separado (Listas encadeadas)
@@ -38,6 +39,9 @@ Uma função Hash ruim pode ocasionar em simplesmente uma lista encadeada gigant
 
 
 - Homogêneo (Teste linear): Quando a colisão acontece, o elemento vai para o próximo espaço vazio (disponível?)
+
+#### Resumindo:
+O encadeamento separado utiliza uma região de memória adicional a ser implementada possívelmente com uma lista encadeada para tratar colisões. O teste linear utiliza a região de memória da própria tabela para colocar os registros que colidiram.
 
 ## Uma função Hash é boa se:
 

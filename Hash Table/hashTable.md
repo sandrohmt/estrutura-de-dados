@@ -2,7 +2,7 @@
 
 ## Regras
 
-Composto por uma par de chave valor. O valor sendo um número inteiro e a chave podendo ser de qualquer tipo.
+Composto por uma par de chave valor. O valor sendo um número inteiro (calculado por uma função hash) e a chave podendo ser de qualquer tipo.
 As chaves são alocadas em um vetor, e com uma função, a chave é transformada em um valor inteiro, essa é a função hash.
 Seu objetivo é, a partir de uma chave simples, fazer uma busca rápida e obter o valor desejado.
 
